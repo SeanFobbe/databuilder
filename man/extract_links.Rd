@@ -15,5 +15,5 @@ extract_links(x, NA.omit = FALSE)
 A vector of hyperlinks (for a single HTML document) or a named list of vectors (for a vector of document names).
 }
 \description{
-Extracts hyperlinks from one or more HTML documents by reading a HTML markup, selecting all <a> nodes and returning their 'href' attributes as a vector. Robust implementation that returns 'NA' on error.
+Extracts hyperlinks from one or more HTML documents by reading a HTML markup, selecting all <a> nodes and returning their 'href' attributes as a vector. Robust implementation that returns 'NA' on error. Vectorized.
 }

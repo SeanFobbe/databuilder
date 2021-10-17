@@ -9,6 +9,10 @@
 #' @param century.next The next century. Defaults to the 2000s (21st century).
 #'
 #' @return A vector of four-digit years.
+#'
+#' @examples
+#' year_iso(91)
+#' year_iso(c(13, 45, 36, 57, 68))
 
 year_iso <- function(x,
                      boundary = 50,

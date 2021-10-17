@@ -2,10 +2,16 @@
 % Please edit documentation in R/list_empty_NA.R
 \name{replace_NA}
 \alias{replace_NA}
-\title{empty.list.NA: Replaces empty elements in list with "NA"}
+\title{empty.list.NA: Replaces empty elements in list with 'NA'. Vectorized.}
 \usage{
 replace_NA(x)
 }
+\arguments{
+\item{x}{A list.}
+}
+\value{
+The list that was passed, where empty elements are replaced with 'NA'.
+}
 \description{
-empty.list.NA: Replaces empty elements in list with "NA"
+empty.list.NA: Replaces empty elements in list with 'NA'. Vectorized.
 }
