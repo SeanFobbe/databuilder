@@ -7,6 +7,8 @@
 #' @param boundary The boundary year. Defaults to 50 (= 1950).
 #' @param century.prev The previous century. Defaults to the 1900s (20th century).
 #' @param century.next The next century. Defaults to the 2000s (21st century).
+#'
+#' @return A vector of four-digit years.
 
 year_iso <- function(x,
                      boundary = 50,
