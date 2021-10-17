@@ -2,7 +2,9 @@
 % Please edit documentation in R/year_iso.R
 \name{year_iso}
 \alias{year_iso}
-\title{\subsection{f.year.iso: Transform Two-Digit Years to Four-Digit Years}{
+\title{\subsection{year.iso: Transform Two-Digit Years to Four-Digit Years}{
+
+This function transforms two-digit years (YY) to four-digit years compliant with ISO-8601 (YYYY). It is based on the assumption that two-digit years above a certain boundary year belong to the previous century and years at or below that boundary belong to the next century.
 }}
 \usage{
 year_iso(x, boundary = 50, century.prev = 1900, century.next = 2000)
@@ -20,7 +22,10 @@ year_iso(x, boundary = 50, century.prev = 1900, century.next = 2000)
 A vector of four-digit years.
 }
 \description{
+\subsection{year.iso: Transform Two-Digit Years to Four-Digit Years}{
+
 This function transforms two-digit years (YY) to four-digit years compliant with ISO-8601 (YYYY). It is based on the assumption that two-digit years above a certain boundary year belong to the previous century and years at or below that boundary belong to the next century.
+}
 }
 \examples{
 year_iso(91)
