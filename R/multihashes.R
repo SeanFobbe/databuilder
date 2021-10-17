@@ -1,4 +1,4 @@
-#'# Computation of SHA2 and SHA3 Hashes
+#' Computation of SHA2 and SHA3 Hashes
 
 #' Computes SHA2-256 and SHA3-512 hashes for a single file. It returns a data frame with the file name, SHA2-256 hashe and SHA3-512 hash.  The function requires the existence of the openssl (RPM) library on the system.
 
