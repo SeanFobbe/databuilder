@@ -13,9 +13,9 @@ year_iso <- function(x,
                      century.prev = 1900,
                      century.next = 2000){
     
-    data.table::fifelse(inputyear > boundary,
-                        century.prev+inputyear,
-                        century.next+inputyear,
+    data.table::fifelse(x > boundary,
+                        century.prev + x,
+                        century.next + x,
                         na = NA)
     
 }
