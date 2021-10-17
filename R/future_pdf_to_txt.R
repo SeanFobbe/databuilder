@@ -24,11 +24,11 @@ pdf_to_txt <- function(x){
                     ignore.case = TRUE)
     
     ## Write TXT to Disk
-    write.table(pdf.extracted,
-                txtname,
-                quote = FALSE,
-                row.names = FALSE,
-                col.names = FALSE)
+    utils::write.table(pdf.extracted,
+                       txtname,
+                       quote = FALSE,
+                       row.names = FALSE,
+                       col.names = FALSE)
     
 }
 
@@ -61,8 +61,8 @@ future_pdf_to_txt <- function(x){
     txt.results <- list.files(pattern = "\\.txt")
 
     ## Compare full list to files in folder
-    txt.missing <- setdiff(txtnames,
-                           txtresults)
+    txt.missing <- setdiff(txt.names,
+                           txt.results)
     
     ## Timestamp: End
     end.extract <- Sys.time()
