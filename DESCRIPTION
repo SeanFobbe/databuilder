@@ -17,6 +17,8 @@ Imports:
     data.table,
     future,
     future.apply,
+    kableExtra,
+    knitr,
     pdftools,
     rvest,
     utils,

@@ -11,38 +11,30 @@
 
 #' @param sumrow [Optional] Logical. Whether to add a summary row. Defaults to TRUE.
 
-#' @param output.list [Optional] Logical. Whether to output the frequency tables as a list. Defaults to TRUE. Returns NULL otherwise.
+#' @param out.list [Optional] Logical. Whether to output the frequency tables as a list. Defaults to TRUE. Returns NULL otherwise.
 
-#' @param output.kable [Optional] Logical. Whether to return kable tables. Defaults to FALSE.
+#' @param out.kable [Optional] Logical. Whether to return kable tables. Defaults to FALSE.
 
-#' @param output.csv [Optional] Logical. Whether to write CSV files (one per variable) to disk. Defaults to FALSE.
+#' @param out.csv [Optional] Logical. Whether to write CSV files (one per variable) to disk. Defaults to FALSE.
 
-#' @param outputdir [Optional] Character. The target directory for writing CSV files. Defaults to the current R working directory.
+#' @param out.dir [Optional] Character. The target directory for writing CSV files. Defaults to the current R working directory.
 
 #' @param prefix [Optional] A string to be prefixed to the filename of each CSV file. Default is not to add a string and just to output the variable name as the name of the CSV file.
 
 #' @param align [Optional] Alignment of table columns passed to kable. Default is "r". Note that your options passed must work for a five-column layout.
 
 
-
-#'## Required Packages
-
-library(data.table)
-library(knitr)
-library(kableExtra)
-
-
 #'## Function
 
-f.fast.freqtable <- function(x,
-                             varlist = names(x),
-                             sumrow = TRUE,
-                             output.list = TRUE,
-                             output.kable = FALSE,
-                             output.csv = FALSE,
-                             outputdir = "./",
-                             prefix = "",
-                             align = "r"){
+ffreqtable <- function(x,
+                       varlist = names(x),
+                       sumrow = TRUE,
+                       out.list = TRUE,
+                       out.kable = FALSE,
+                       out.csv = FALSE,
+                       outdir = "./",
+                       prefix = "",
+                       align = "r"){
     
     ## Begin List
     freqtable.list <- vector("list", length(varlist))
@@ -81,10 +73,10 @@ f.fast.freqtable <- function(x,
         freqtable.list[[i]] <- freqtable
 
         ## Write CSV
-        if (output.csv == TRUE){
+        if (out.csv == TRUE){
             
             fwrite(freqtable,
-                   paste0(outputdir,
+                   paste0(outdir,
                           prefix,
                           varname,
                           ".csv"),
@@ -93,7 +85,7 @@ f.fast.freqtable <- function(x,
         }
 
         ## Output Kable
-        if (output.kable == TRUE){
+        if (out.kable == TRUE){
 
             cat("\n------------------------------------------------\n")
             cat(paste0("Frequency Table for Variable:   ", varname, "\n"))
@@ -112,7 +104,7 @@ f.fast.freqtable <- function(x,
     }
 
     ## Return List of Frequency Tables
-    if (output.list == TRUE){
+    if (out.list == TRUE){
         return(freqtable.list)
     }
 }
