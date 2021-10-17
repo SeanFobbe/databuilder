@@ -1,0 +1,19 @@
+#' Extract Links from HTML
+#'
+#' Extracts links from an HTML page. More specifically: reads an HTML page, selects all <a> nodes and returns all href attributes as a vector. 
+#' 
+#' @param URL A valid URL to an HTML page.
+
+#' @return A vector of links.
+
+
+linkextract <- function(URL){
+    tryCatch({
+        html <- xml2::read_html(URL)
+        nodes <- rvest::html_nodes(html, "a")
+        links <- rvest::html_attr(nodes, 'href')
+        return(links)},
+        error=function(cond) {
+            return(NA)}
+        )
+}

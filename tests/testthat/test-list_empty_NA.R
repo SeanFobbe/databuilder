@@ -1,0 +1,5 @@
+test_that("Replacement works.", {
+    expect_equal(list_empty_NA(vector("list", 3)),
+                 rep(list(as.character(NA)), 3))
+})
+

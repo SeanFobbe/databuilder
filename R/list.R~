@@ -1,0 +1,10 @@
+# empty.list.NA: Replaces empty elements in list with "NA"
+
+list.empty.NA <- function(x){
+    if (length(x) == 0){
+        return(NA_character_)
+    }else{
+        return(paste(x,
+                     collapse = " "))}
+}
+
