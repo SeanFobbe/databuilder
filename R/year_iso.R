@@ -1,12 +1,11 @@
 #'## year.iso: Transform Two-Digit Years to Four-Digit Years
 
-#' This function transforms two-digit years (YY) to four-digit years compliant with ISO-8601 (YYYY). It is based on the assumption that two-digit years above a certain boundary year belong to the previous century and years at or below that boundary belong to the next century.
+#' This function transforms two-digit years (YY) to four-digit years compliant with ISO-8601 (YYYY). It is based on the assumption that two-digit years above a certain boundary year belong to the reference century and years at or below that boundary belong to the following century.
 
 
 #' @param x A vector of two-digit years.
 #' @param boundary The boundary year. Defaults to 50 (= 1950).
-#' @param century.prev The previous century. Defaults to the 1900s (20th century).
-#' @param century.next The next century. Defaults to the 2000s (21st century).
+#' @param century The reference century. Defaults to the 1900s (20th century).
 #'
 #' 
 #' @return A vector of four-digit years.
@@ -22,11 +21,12 @@
 
 year_iso <- function(x,
                      boundary = 50,
-                     century.prev = 1900,
-                     century.next = 2000){
+                     century = 1900){
+
+    century.next <- century + 100
     
     data.table::fifelse(x > boundary,
-                        century.prev + x,
+                        century + x,
                         century.next + x,
                         na = NA)
     
