@@ -15,7 +15,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
     data.table,
+    future,
+    future.apply,
+    pdftools,
     rvest,
+    utils,
     xml2
 Suggests: 
     testthat (>= 3.0.0)
