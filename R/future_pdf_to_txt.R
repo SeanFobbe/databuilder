@@ -39,21 +39,21 @@ future_pdf_to_txt <- function(x){
 
     ## Intro message
     message(paste("Processing",
-                length(x),
-                "files. Begin at:",
-                begin.extract))
+                  length(x),
+                  "files. Begin at:",
+                  begin.extract))
 
     ## Perform conversion from PDF to TXT
-    invisible(future_lapply(x,
-                            pdf_to_txt,
-                            future.seed = TRUE))
+    invisible(future.apply::future_lapply(x,
+                                          pdf_to_txt,
+                                          future.seed = TRUE))
 
 
     ## Construct full list of TXT names
     txt.names <- gsub("\\.pdf",
-                    "\\.txt",
-                    x,
-                    ignore.case = TRUE)
+                      "\\.txt",
+                      x,
+                      ignore.case = TRUE)
 
     ## Check list of TXT files in folder
     txt.results <- list.files(pattern = "\\.txt")
@@ -70,16 +70,16 @@ future_pdf_to_txt <- function(x){
 
     ## Outro message
     message(paste0("Successfully processed ",
-                  length(x) - length(txt.missing),
-                 " files. ",
-                 length(txt.missing),
-                 " files failed. Runtime was ",
-                  round(duration.extract,
-                        digits = 2),
-                  " ",
-                  attributes(duration.extract)$units,
-                  ". Ended at: ",
-                 end.extract))
+                   length(x) - length(txt.missing),
+                   " files. ",
+                   length(txt.missing),
+                   " files failed. Runtime was ",
+                   round(duration.extract,
+                         digits = 2),
+                   " ",
+                   attributes(duration.extract)$units,
+                   ". Ended at: ",
+                   end.extract))
 
 
 }
