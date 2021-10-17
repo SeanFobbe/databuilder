@@ -2,10 +2,10 @@
 
 #' Extracts text from PDF files and writes the result to disk as TXT files. Parallel implementation with the future package. Resulting TXT files have the same filename as the original document (only the extension is modified).
 #'
-#' Please note that you must declare your own future evaluation strategy. By default the function will be evaluated sequentially. Use plan(multisession, workers = n) on Windows or plan(multicore, workers = n) on Linux/Mac, where n stands for the number of CPU cores you wish to use. Due to the need to read/write to the disk the function may not work properly on high-performance clusters.
+#' Please note that you must declare your own future evaluation strategy prior to using the function to enable parallelization. By default the function will be evaluated sequentially. On Windows, use future::plan(multisession, workers = n), on Linux/Mac, use future::plan(multicore, workers = n), where n stands for the number of CPU cores you wish to use. Due to the need to read from the disk the function may not work properly on high-performance clusters.
 
 
-#' @param x A vector of PDF filenames.
+#' @param x A vector of PDF filenames. Should be located in the working directory.
 #'
 #' 
 #' @return A set of TXT files on disk with the same basename as the original PDF files. Invisible return in R session.
