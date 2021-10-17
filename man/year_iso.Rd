@@ -2,7 +2,7 @@
 % Please edit documentation in R/year_iso.R
 \name{year_iso}
 \alias{year_iso}
-\title{\subsection{f.year.iso: Tranform Two-Digit Years to Four-Digit Years}{
+\title{\subsection{f.year.iso: Transform Two-Digit Years to Four-Digit Years}{
 }}
 \usage{
 year_iso(x, boundary = 50, century.prev = 1900, century.next = 2000)
