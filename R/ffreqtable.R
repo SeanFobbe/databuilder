@@ -24,7 +24,12 @@
 #' @param align [Optional] Alignment of table columns passed to kable. Default is "r". Note that your options passed must work for a five-column layout.
 
 
-#'## Function
+
+#' @return Returns a list of frequency tables for each variable by default. Different out.* arguments can add CSV and kable output.
+
+
+
+
 
 ffreqtable <- function(x,
                        varlist = names(x),
@@ -32,19 +37,22 @@ ffreqtable <- function(x,
                        out.list = TRUE,
                        out.kable = FALSE,
                        out.csv = FALSE,
-                       outdir = "./",
+                       out.dir = "./",
                        prefix = "",
                        align = "r"){
     
     ## Begin List
-    freqtable.list <- vector("list", length(varlist))
+    freqtable.list <- vector("list",
+                             length(varlist))
 
     ## Calculate Frequency Table
     for (i in seq_along(varlist)){
         
         varname <- varlist[i]
         
-        freqtable <- x[, .N, keyby=c(paste0(varname))]
+        freqtable <- x[,
+                       .N,
+                       keyby = c(paste0(varname))]
         
         freqtable[, c("exactpercent",
                       "roundedpercent",
@@ -54,7 +62,9 @@ ffreqtable <- function(x,
                           cumulpercent <- round(cumsum(exactpercent), 2)
                           list(exactpercent,
                                roundedpercent,
-                               cumulpercent)}]
+                               cumulpercent)
+                      }
+                  ]
 
         ## Calculate Summary Row
         if (sumrow == TRUE){
@@ -75,12 +85,12 @@ ffreqtable <- function(x,
         ## Write CSV
         if (out.csv == TRUE){
             
-            fwrite(freqtable,
-                   paste0(outdir,
-                          prefix,
-                          varname,
-                          ".csv"),
-                   na = "NA")
+            data.table::fwrite(freqtable,
+                               paste0(out.dir,
+                                      prefix,
+                                      varname,
+                                      ".csv"),
+                               na = "NA")
 
         }
 
@@ -94,12 +104,14 @@ ffreqtable <- function(x,
                        x[, .N, keyby=c(paste0(varname))][,.N],
                        " unique value(s) detected.\n\n"))
 
+            kable <- knitr::kable(freqtable,
+                                  format = "latex",
+                                  align = align,
+                                  booktabs = TRUE,
+                                  longtable = TRUE)
             
-            print(kable(freqtable,
-                        format = "latex",
-                        align = align,
-                        booktabs = TRUE,
-                        longtable = TRUE) %>% kable_styling(latex_options = "repeat_header"))
+            print(kableExtra::kable_styling(kable,
+                                            latex_options = "repeat_header"))
         }
     }
 
