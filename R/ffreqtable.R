@@ -29,6 +29,12 @@
 
 
 
+x <- sample(100, 500, replace=TRUE)
+
+x <- as.data.table(x)
+
+
+ffreqtable(x)
 
 
 ffreqtable <- function(x,
@@ -40,6 +46,25 @@ ffreqtable <- function(x,
                        out.dir = "./",
                        prefix = "",
                        align = "r"){
+
+
+    if((is.vector(x) == TRUE) || (is.data.frame(x) == TRUE) || (is.data.table(x) == TRUE)){
+        stop("ffreqtable only accepts data.table, data.frame or vectors as input.")
+        }
+
+    
+    ## Check if object is vector, data.frame or data.table and coerce if possible 
+
+    if(is.vector(x){
+        
+        x <- as.data.table(x) setDT(x)
+        
+    }else if(is.data.frame(x) == TRUE){
+        
+        setDT(x)
+        
+    }
+
     
     ## Begin List
     freqtable.list <- vector("list",
