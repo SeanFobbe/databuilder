@@ -1,6 +1,6 @@
 Package: databuilder
 Title: Create New Data Sets (esp. Large Text Corpora)
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person(given = "Seán",
            family = "Fobbe",
