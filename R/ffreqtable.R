@@ -29,13 +29,6 @@
 
 
 
-x <- sample(100, 500, replace=TRUE)
-
-x <- as.data.table(x)
-
-
-ffreqtable(x)
-
 
 ffreqtable <- function(x,
                        varlist = names(x),
@@ -47,21 +40,23 @@ ffreqtable <- function(x,
                        prefix = "",
                        align = "r"){
 
-
-    if((is.vector(x) == TRUE) || (is.data.frame(x) == TRUE) || (is.data.table(x) == TRUE)){
+    
+    ## Test if x is a suitable object
+    
+    if((is.vector(x) == FALSE) && (is.data.frame(x) == FALSE) && (is.data.table(x) == FALSE)){
         stop("ffreqtable only accepts data.table, data.frame or vectors as input.")
         }
 
     
-    ## Check if object is vector, data.frame or data.table and coerce if possible 
+    ## Check if x is vector or data.frame and coerce to data.table 
 
-    if(is.vector(x){
-        
-        x <- as.data.table(x) setDT(x)
-        
-    }else if(is.data.frame(x) == TRUE){
+    if(is.data.frame(x) == TRUE){
         
         setDT(x)
+        
+    }else if(is.vector(x)){
+        
+        x <- as.data.table(x)
         
     }
 
@@ -82,15 +77,15 @@ ffreqtable <- function(x,
                        .N,
                        keyby = c(paste0(varname))]
         
-        freqtable[, c("exactpercent",
-                      "roundedpercent",
-                      "cumulpercent") := {
-                          exactpercent  <-  N/sum(N)*100
-                          roundedpercent <- round(exactpercent, 2)
-                          cumulpercent <- round(cumsum(exactpercent), 2)
-                          list(exactpercent,
-                               roundedpercent,
-                               cumulpercent)
+        freqtable[, c("exact_pct",
+                      "rounded_pct",
+                      "cumul_pct") := {
+                          exact_pct  <-  N/sum(N)*100
+                          rounded_pct <- round(exact_pct, 2)
+                          cumul_pct <- round(cumsum(exact_pct), 2)
+                          list(exact_pct,
+                               rounded_pct,
+                               cumul_pct)
                       }
                   ]
 
@@ -99,11 +94,11 @@ ffreqtable <- function(x,
             colsums <-  cbind("Total",
                               freqtable[, lapply(.SD, function(x){round(sum(x))}),
                                         .SDcols = c("N",
-                                                    "exactpercent",
-                                                    "roundedpercent")
-                                        ], round(max(freqtable$cumulpercent)))
+                                                    "exact_pct",
+                                                    "rounded_pct")
+                                        ], round(max(freqtable$cumul_pct)))
             
-            colnames(colsums)[c(1,5)] <- c(varname, "cumulpercent")
+            colnames(colsums)[c(1,5)] <- c(varname, "cumul_pct")
             freqtable <- rbind(freqtable, colsums)
         }
         
