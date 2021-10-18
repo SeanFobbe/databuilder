@@ -2,3 +2,4 @@
 
 export(future_pdf_to_txt)
 export(year_iso)
+import(data.table)

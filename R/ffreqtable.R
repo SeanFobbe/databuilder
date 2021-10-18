@@ -45,6 +45,9 @@ ffreqtable <- function(x,
     freqtable.list <- vector("list",
                              length(varlist))
 
+    ## Separately declare Variable due to NSE notes in R CMD check
+    N <- NULL  
+    
     ## Calculate Frequency Table
     for (i in seq_along(varlist)){
         
