@@ -7,21 +7,21 @@
 
 #' @param x A data.frame or data.table.
 
-#' @param varlist [Optional] Character. A vector of variable names to construct tables for. Defaults to all variables.
+#' @param varlist (Optional) Character. A vector of variable names to construct tables for. Defaults to all variables.
 
-#' @param sumrow [Optional] Logical. Whether to add a summary row. Defaults to TRUE.
+#' @param sumrow (Optional) Logical. Whether to add a summary row. Defaults to TRUE.
 
-#' @param out.list [Optional] Logical. Whether to output the frequency tables as a list. Defaults to TRUE. Returns NULL otherwise.
+#' @param out.list (Optional) Logical. Whether to output the frequency tables as a list. Defaults to TRUE. Returns NULL otherwise.
 
-#' @param out.kable [Optional] Logical. Whether to return kable tables. Defaults to FALSE.
+#' @param out.kable (Optional) Logical. Whether to return kable tables. Defaults to FALSE.
 
-#' @param out.csv [Optional] Logical. Whether to write CSV files (one per variable) to disk. Defaults to FALSE.
+#' @param out.csv (Optional) Logical. Whether to write CSV files (one per variable) to disk. Defaults to FALSE.
 
-#' @param out.dir [Optional] Character. The target directory for writing CSV files. Defaults to the current R working directory.
+#' @param out.dir (Optional) Character. The target directory for writing CSV files. Defaults to the current R working directory.
 
-#' @param prefix [Optional] A string to be prefixed to the filename of each CSV file. Default is not to add a string and just to output the variable name as the name of the CSV file.
+#' @param prefix (Optional) A string to be prefixed to the filename of each CSV file. Default is not to add a string and just to output the variable name as the name of the CSV file.
 
-#' @param align [Optional] Alignment of table columns passed to kable. Default is "r". Note that your options passed must work for a five-column layout.
+#' @param align (Optional) Alignment of table columns passed to kable. Default is "r". Note that your options passed must work for a five-column layout.
 
 
 

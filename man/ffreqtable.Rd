@@ -20,21 +20,21 @@ ffreqtable(
 \arguments{
 \item{x}{A data.frame or data.table.}
 
-\item{varlist}{\link{Optional} Character. A vector of variable names to construct tables for. Defaults to all variables.}
+\item{varlist}{(Optional) Character. A vector of variable names to construct tables for. Defaults to all variables.}
 
-\item{sumrow}{\link{Optional} Logical. Whether to add a summary row. Defaults to TRUE.}
+\item{sumrow}{(Optional) Logical. Whether to add a summary row. Defaults to TRUE.}
 
-\item{out.list}{\link{Optional} Logical. Whether to output the frequency tables as a list. Defaults to TRUE. Returns NULL otherwise.}
+\item{out.list}{(Optional) Logical. Whether to output the frequency tables as a list. Defaults to TRUE. Returns NULL otherwise.}
 
-\item{out.kable}{\link{Optional} Logical. Whether to return kable tables. Defaults to FALSE.}
+\item{out.kable}{(Optional) Logical. Whether to return kable tables. Defaults to FALSE.}
 
-\item{out.csv}{\link{Optional} Logical. Whether to write CSV files (one per variable) to disk. Defaults to FALSE.}
+\item{out.csv}{(Optional) Logical. Whether to write CSV files (one per variable) to disk. Defaults to FALSE.}
 
-\item{out.dir}{\link{Optional} Character. The target directory for writing CSV files. Defaults to the current R working directory.}
+\item{out.dir}{(Optional) Character. The target directory for writing CSV files. Defaults to the current R working directory.}
 
-\item{prefix}{\link{Optional} A string to be prefixed to the filename of each CSV file. Default is not to add a string and just to output the variable name as the name of the CSV file.}
+\item{prefix}{(Optional) A string to be prefixed to the filename of each CSV file. Default is not to add a string and just to output the variable name as the name of the CSV file.}
 
-\item{align}{\link{Optional} Alignment of table columns passed to kable. Default is "r". Note that your options passed must work for a five-column layout.}
+\item{align}{(Optional) Alignment of table columns passed to kable. Default is "r". Note that your options passed must work for a five-column layout.}
 }
 \value{
 Returns a list of frequency tables for each variable by default. Different out.* arguments can add CSV and kable output.
