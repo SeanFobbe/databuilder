@@ -1,13 +1,12 @@
 Package: databuilder
-Title: What the Package Does (One Line, Title Case)
+Title: Create New Data Sets (esp. Large Text Corpora)
 Version: 0.0.0.9001
 Authors@R: 
-    person(given = "Sean",
+    person(given = "Seán",
            family = "Fobbe",
            role = c("aut", "cre"),
-           email = "s.fobbe@posteo.de",
-           comment = c(ORCID = "0000-0003-3808-7730"))
-Description: What the package does (one paragraph).
+           email = "fobbe-data@posteo.de")
+Description: Provides a range of helper functions to construct and test new data sets, particularly large text corpora.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
