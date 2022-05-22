@@ -5,7 +5,7 @@
 #' Please note that you must declare your own future evaluation strategy prior to using the function to enable parallelization. By default the function will be evaluated sequentially. On Windows, use future::plan(multisession, workers = n), on Linux/Mac, use future::plan(multicore, workers = n), where n stands for the number of CPU cores you wish to use. Due to the need to read from the disk the function may not work properly on high-performance clusters.
 
 
-#' @param x A vector of PDF filenames. Should be located in the working directory.
+#' @param x A vector of PDF filenames.
 #'
 #' 
 #' @return A set of TXT files on disk with the same basename as the original PDF files. Invisible return in R session.
@@ -40,11 +40,7 @@ future_pdf_to_txt <- function(x){
                       ignore.case = TRUE)
 
     ## Check list of TXT files in folder
-    txt.results <- list.files(dirname(x), pattern = "\\.txt")
-
-    ## Compare full list to files in folder
-    txt.missing <- setdiff(txt.names,
-                           txt.results)
+    txt.results <- file.exists(txt.names)
     
     ## Timestamp: End
     end.extract <- Sys.time()
@@ -54,7 +50,7 @@ future_pdf_to_txt <- function(x){
 
     ## Outro message
     message(paste0("Successfully processed ",
-                   length(x) - length(txt.missing),
+                   sum(txt.results),
                    " files. ",
                    length(txt.missing),
                    " files failed. Runtime was ",
