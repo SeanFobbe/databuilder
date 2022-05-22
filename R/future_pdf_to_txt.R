@@ -43,7 +43,7 @@ future_pdf_to_txt <- function(x){
                       ignore.case = TRUE)
 
     ## Check list of TXT files in folder
-    txt.results <- list.files(pattern = "\\.txt")
+    txt.results <- list.files(dirname(x), pattern = "\\.txt")
 
     ## Compare full list to files in folder
     txt.missing <- setdiff(txt.names,
