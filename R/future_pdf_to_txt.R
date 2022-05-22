@@ -38,7 +38,7 @@ future_pdf_to_txt <- function(x){
 
     ## Construct full list of TXT names
     txt.names <- gsub("\\.pdf$",
-                      "\\.txt$",
+                      "\\.txt",
                       x,
                       ignore.case = TRUE)
 
