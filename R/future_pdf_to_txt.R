@@ -69,3 +69,28 @@ future_pdf_to_txt <- function(x){
 
 
 }
+
+
+
+
+
+
+pdf_to_txt <- function(x){
+    
+    ## Extract text layer from PDF
+    pdf.extracted <- pdftools::pdf_text(x)
+
+    ## TXT filename
+    txtname <- gsub("\\.pdf$",
+                    "\\.txt",
+                    x,
+                    ignore.case = TRUE)
+    
+    ## Write TXT to Disk
+    utils::write.table(pdf.extracted,
+                       txtname,
+                       quote = FALSE,
+                       row.names = FALSE,
+                       col.names = FALSE)
+    
+}
