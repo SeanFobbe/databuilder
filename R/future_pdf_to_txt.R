@@ -16,7 +16,7 @@
 
 
 
-future_pdf_to_txt <- function(x){
+pdf_extract <- function(x){
 
     ## Timestamp: Begin
     begin.extract <- Sys.time()
@@ -29,7 +29,7 @@ future_pdf_to_txt <- function(x){
 
     ## Perform conversion from PDF to TXT
     invisible(future.apply::future_lapply(x,
-                                          pdf_to_txt,
+                                          pdf_extract_single,
                                           future.seed = TRUE))
 
 
@@ -75,7 +75,7 @@ future_pdf_to_txt <- function(x){
 
 
 
-pdf_to_txt <- function(x){
+pdf_extract_single <- function(x){
     
     ## Extract text layer from PDF
     pdf.extracted <- pdftools::pdf_text(x)
