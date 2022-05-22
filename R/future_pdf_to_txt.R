@@ -32,10 +32,13 @@ future_pdf_to_txt <- function(x){
                                           pdf_to_txt,
                                           future.seed = TRUE))
 
+    result <- future.apply::future_lapply(x,
+                                          pdf_to_txt,
+                                          future.seed = TRUE)
 
     ## Construct full list of TXT names
-    txt.names <- gsub("\\.pdf",
-                      "\\.txt",
+    txt.names <- gsub("\\.pdf$",
+                      "\\.txt$",
                       x,
                       ignore.case = TRUE)
 
