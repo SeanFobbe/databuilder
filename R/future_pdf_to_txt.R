@@ -21,11 +21,11 @@ future_pdf_to_txt <- function(x){
     ## Timestamp: Begin
     begin.extract <- Sys.time()
 
-    ## Intro message
-    message(paste("Processing",
-                  length(x),
-                  "files. Begin at:",
-                  begin.extract))
+    ## Intro messages
+    
+    message(paste("Begin at:", begin.extract))
+    message(paste("Processing", length(x), "files."))
+
 
     ## Perform conversion from PDF to TXT
     invisible(future.apply::future_lapply(x,
@@ -48,17 +48,23 @@ future_pdf_to_txt <- function(x){
     ## Duration
     duration.extract <- end.extract - begin.extract
 
-    ## Outro message
+    
+    ## Outro messages
+    
     message(paste0("Successfully processed ",
                    sum(txt.results),
                    " files. ",
                    sum(!txt.results),
-                   " files failed. Runtime was ",
+                   " files failed."))
+    
+    message(paste0("Runtime was ",
                    round(duration.extract,
                          digits = 2),
                    " ",
                    attributes(duration.extract)$units,
-                   ". Ended at: ",
+                   "."))
+    
+    message(paste0("Ended at: ",
                    end.extract))
 
 
