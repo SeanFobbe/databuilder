@@ -24,7 +24,7 @@ future_pdf_to_txt <- function(x){
     ## Intro messages
     
     message(paste("Begin at:", begin.extract))
-    message(paste("Processing", length(x), "files."))
+    message(paste("Processing", length(x), "PDF files."))
 
 
     ## Perform conversion from PDF to TXT
@@ -53,9 +53,9 @@ future_pdf_to_txt <- function(x){
     
     message(paste0("Successfully processed ",
                    sum(txt.results),
-                   " files. ",
+                   " PDF files. ",
                    sum(!txt.results),
-                   " files failed."))
+                   " PDF files failed."))
     
     message(paste0("Runtime was ",
                    round(duration.extract,
