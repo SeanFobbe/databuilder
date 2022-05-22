@@ -17,7 +17,7 @@ pdf_to_txt <- function(x){
 
     ## TXT filename
     txtname <- gsub("\\.pdf$",
-                    "\\.txt$",
+                    "\\.txt",
                     x,
                     ignore.case = TRUE)
     
