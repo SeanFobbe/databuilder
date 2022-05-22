@@ -52,7 +52,7 @@ future_pdf_to_txt <- function(x){
     message(paste0("Successfully processed ",
                    sum(txt.results),
                    " files. ",
-                   length(txt.missing),
+                   sum(!txt.results),
                    " files failed. Runtime was ",
                    round(duration.extract,
                          digits = 2),
