@@ -6,6 +6,7 @@
 
 
 #' @param x A vector of PDF filenames.
+#' @param quiet Supress messages.
 #'
 #' 
 #' @return A set of TXT files on disk with the same basename as the original PDF files. Invisible return in R session.
@@ -16,16 +17,17 @@
 
 
 
-pdf_extract <- function(x){
+pdf_extract <- function(x,
+                        quiet = TRUE){
 
     ## Timestamp: Begin
     begin.extract <- Sys.time()
 
     ## Intro messages
-    
-    message(paste("Begin at:", begin.extract))
-    message(paste("Processing", length(x), "PDF files."))
-
+    if(quiet == FALSE){
+        message(paste("Begin at:", begin.extract))
+        message(paste("Processing", length(x), "PDF files."))
+    }
 
     ## Perform conversion from PDF to TXT
     invisible(future.apply::future_lapply(x,
@@ -50,23 +52,23 @@ pdf_extract <- function(x){
 
     
     ## Outro messages
-    
-    message(paste0("Successfully processed ",
-                   sum(txt.results),
-                   " PDF files. ",
-                   sum(!txt.results),
-                   " PDF files failed."))
-    
-    message(paste0("Runtime was ",
-                   round(duration.extract,
-                         digits = 2),
-                   " ",
-                   attributes(duration.extract)$units,
-                   "."))
-    
-    message(paste0("Ended at: ",
-                   end.extract))
-
+    if(quiet == FALSE){
+        message(paste0("Successfully processed ",
+                       sum(txt.results),
+                       " PDF files. ",
+                       sum(!txt.results),
+                       " PDF files failed."))
+        
+        message(paste0("Runtime was ",
+                       round(duration.extract,
+                             digits = 2),
+                       " ",
+                       attributes(duration.extract)$units,
+                       "."))
+        
+        message(paste0("Ended at: ",
+                       end.extract))
+    }
 
 }
 
