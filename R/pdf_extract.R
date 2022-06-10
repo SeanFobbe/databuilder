@@ -18,6 +18,7 @@
 
 
 pdf_extract <- function(x,
+                        outputdir = NULL,
                         quiet = TRUE){
 
     ## Timestamp: Begin
@@ -32,6 +33,7 @@ pdf_extract <- function(x,
     ## Perform conversion from PDF to TXT
     invisible(future.apply::future_lapply(x,
                                           pdf_extract_single,
+                                          outputdir = outputdir,
                                           future.seed = TRUE))
 
 
@@ -91,6 +93,7 @@ pdf_extract_single <- function(x,
 
     ## Alternate Folder Option
     if (outputdir != NULL){
+        
         txtname <- file.path(outputdir, basename(txtname))
         
         }
