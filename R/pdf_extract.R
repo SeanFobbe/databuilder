@@ -92,7 +92,7 @@ pdf_extract_single <- function(x,
                     ignore.case = TRUE)
 
     ## Alternate Folder Option
-    if (is.null(outputdir)){
+    if (!is.null(outputdir)){
         
         txtname <- file.path(outputdir, basename(txtname))
         
