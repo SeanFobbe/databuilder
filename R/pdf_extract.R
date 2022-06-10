@@ -77,7 +77,8 @@ pdf_extract <- function(x,
 
 
 
-pdf_extract_single <- function(x){
+pdf_extract_single <- function(x,
+                               outputdir = NULL){
     
     ## Extract text layer from PDF
     pdf.extracted <- pdftools::pdf_text(x)
@@ -87,6 +88,12 @@ pdf_extract_single <- function(x){
                     "\\.txt",
                     x,
                     ignore.case = TRUE)
+
+    ## Alternate Folder Option
+    if (outputdir != NULL){
+        txtname <- file.path(outputdir, basename(txtname))
+        
+        }
     
     ## Write TXT to Disk
     utils::write.table(pdf.extracted,
